@@ -59,7 +59,8 @@ function toUpperCase(string) {
  */
 function toDashCase(string) {
   // YOUR CODE BELOW HERE //
-  return string.replace(" ", "-").toLowerCase();
+  //return string.replace(" ", "-").toLowerCase();
+  return string.toLowerCase().split(" ").join("-");
   // YOUR CODE ABOVE HERE //
 }
 
@@ -160,11 +161,20 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
   // YOUR CODE BELOW HERE //
-  if (stringOne.toLowerCase().charCodeAt(0) === stringTwo.toLowerCase().charCodeAt(0)) {
+  // if (stringOne.toLowerCase().charCodeAt(0) === stringTwo.toLowerCase().charCodeAt(0)) {
+  //   return 0;
+  // } else if (stringOne.toLowerCase().charCodeAt(0) < stringTwo.toLowerCase().charCodeAt(0)) {
+  //   return 1;
+  // } else if (stringOne.toLowerCase().charCodeAt(0) > stringTwo.toLowerCase().charCodeAt(0)) {
+  //   return -1;
+  // }
+
+
+  if (stringOne.toLowerCase() === stringTwo.toLowerCase()) {
     return 0;
-  } else if (stringOne.toLowerCase().charCodeAt(0) < stringTwo.toLowerCase().charCodeAt(0)) {
+  } else if (stringOne.toLowerCase() < stringTwo.toLowerCase()) {
     return 1;
-  } else if (stringOne.toLowerCase().charCodeAt(0) > stringTwo.toLowerCase().charCodeAt(0)) {
+  } else if (stringOne.toLowerCase() > stringTwo.toLowerCase()) {
     return -1;
   }
   // YOUR CODE ABOVE HERE //
@@ -179,11 +189,11 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
   // YOUR CODE BELOW HERE //
-  if (stringOne.toLowerCase().charCodeAt(0) === stringTwo.toLowerCase().charCodeAt(0)) {
+  if (stringOne.toLowerCase() === stringTwo.toLowerCase()) {
     return 0;
-  } else if (stringOne.toLowerCase().charCodeAt(0) > stringTwo.toLowerCase().charCodeAt(0)) {
+  } else if (stringOne.toLowerCase() > stringTwo.toLowerCase()) {
     return 1;
-  } else if (stringOne.toLowerCase().charCodeAt(0) < stringTwo.toLowerCase().charCodeAt(0)) {
+  } else if (stringOne.toLowerCase() < stringTwo.toLowerCase()) {
     return -1;
   }
   // YOUR CODE ABOVE HERE //
