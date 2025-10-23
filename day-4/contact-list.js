@@ -35,6 +35,11 @@
 
 function makeContact(id, nameFirst, nameLast) {
   // Solve this function first
+  return {
+    id: id,
+    nameFirst: nameFirst,
+    nameLast: nameLast,
+  };
 }
 
 function makeContactList() {
@@ -44,6 +49,35 @@ function makeContactList() {
   var contacts = [];
 
   return {
+    // addContact(contact): takes a contact object to be added to the contact-list.
+    addContact: function(contact) {
+      contacts.push(contact);
+    },
+
+    /* findContact(fullName): takes a full-name String, like 'Max Gaudin', and
+     *         returns the contact object if found in the contacts-list, or,
+     *         undefined if the fullName does not match any contacts in the list. 
+     */
+    findContact: function(fullName) {
+      var contact = contacts.find(c => c.nameFirst + ' ' + c.nameLast === fullName);
+      return contact ?? undefined;
+    },
+
+    // removeContact(contact): takes a contact object to be removed from the contact-list.
+    removeContact: function(contact) {
+      contacts = contacts.filter(c => c.id !== contact.id);
+      return contacts;
+    },
+
+    // add a printAllContactNames() Function
+    printAllContactNames: function() {
+      var allContactNames = '';
+      for (var c of contacts) {
+        allContactNames += c.nameFirst + " " + c.nameLast + "\n";
+      }
+      return allContactNames.slice(0, -1);
+    },
+
     // we implemented the length api for you //
     length: function(){
       return contacts.length;
