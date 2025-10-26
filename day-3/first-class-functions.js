@@ -13,7 +13,9 @@
  */
 function createGreaterThanFilter(base) {
   // YOUR CODE BELOW HERE //
-     //// **************************  MY BIG TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    return (function(value) {
+        return value > base;
+    });
   // YOUR CODE ABOVE HERE //
 }
 
@@ -25,7 +27,9 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
   // YOUR CODE BELOW HERE //
-  
+  return function (value) {
+    return value < base;
+  };
   // YOUR CODE ABOVE HERE //
 }
 
@@ -38,7 +42,10 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
   // YOUR CODE BELOW HERE //
+  return function(string) {
 
+    return string[0].toUpperCase() === startsWith.toUpperCase();
+  }
   // YOUR CODE ABOVE HERE //
 }
 
@@ -51,7 +58,10 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
   // YOUR CODE BELOW HERE //
-
+  return (function(string) {
+    var characters = string.split("");
+    return characters.at(-1).toLowerCase() === endsWith.toLowerCase();
+  });
   // YOUR CODE ABOVE HERE //
 }
 
@@ -72,6 +82,12 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
   // YOUR CODE BELOW HERE //
+  var result = [];
+  for (var e = 0; e < strings.length; e++) {
+    result.push(modify(strings[e]));
+  }
+
+  return result;
 
   // YOUR CODE ABOVE HERE //
 }
@@ -99,8 +115,13 @@ function modifyStrings(strings, modify) {
 function allStringsPass(strings, test) {
   // YOUR CODE BELOW HERE //
 
+  for (var s = 0; s < strings.length; s++) {
+    if (!test(strings[s])) return false;
+  }
+  return true;
   // YOUR CODE ABOVE HERE //
 }
+
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if (
